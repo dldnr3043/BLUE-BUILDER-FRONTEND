@@ -1,17 +1,16 @@
 import { createWebHistory, createRouter } from "vue-router";
-import HelloWorld from "@/components/HelloWorld.vue";
-import TestComponent from "@/components/TestComponent.vue";
+import LoginPage from "@/views/auth/LoginPage.vue";
 
 const routes = [
     {
         path: "/",
-        name: "HelloWorld",
-        component: HelloWorld,
+        name: "LoginPage",
+        component: LoginPage,
     },
     {
-        path: "/test",  // TestComponent.vue로 이동할 Path
-        name: "TestComponent",  // router name
-        component: TestComponent,  // Path로 이동될 Component
+        path: "/login",  // TestComponent.vue로 이동할 Path
+        name: "LoginPage",  // router name
+        component: LoginPage,  // Path로 이동될 Component
     },
 ];
 
