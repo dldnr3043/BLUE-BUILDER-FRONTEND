@@ -1,0 +1,35 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: 'NotoKr';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./notokr-regular.eot');
+  src: url('./notokr-regular.eot?#iefix') format('embedded-opentype'),
+    url('./notokr-regular.woff2') format('woff2'),
+    url('./notokr-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'NotoKr';
+  font-style: normal;
+  font-weight: 500;
+  src: url('./notokr-medium.eot');
+  src: url('./notokr-medium.eot?#iefix') format('embedded-opentype'),
+    url('./notokr-medium.woff2') format('woff2'),
+    url('./notokr-medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'NotoKr';
+  font-style: normal;
+  font-weight: 700;
+  src: url('./notokr-bold.eot');
+  src: url('./notokr-bold.eot?#iefix') format('embedded-opentype'),
+    url('./notokr-bold.woff2') format('woff2'),
+    url('./notokr-bold.woff') format('woff');
+}
+
+.v-application{
+  font-weight: 500;
+}
