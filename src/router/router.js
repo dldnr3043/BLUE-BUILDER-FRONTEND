@@ -7,11 +7,11 @@ const routes = [
         name: "LoginPage",
         component: LoginPage,
     },
-    {
-        path: "/login",  
-        name: "LoginPage",
-        component: LoginPage,
-    },
+    // {
+    //     path: "/login",  
+    //     name: "LoginPage",
+    //     component: LoginPage,
+    // },
 ]
 
 const router = createRouter({
