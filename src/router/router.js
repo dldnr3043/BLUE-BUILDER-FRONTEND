@@ -1,5 +1,5 @@
-import { createWebHistory, createRouter } from "vue-router";
-import LoginPage from "@/views/auth/LoginPage.vue";
+import { createWebHistory, createRouter } from "vue-router"
+import LoginPage from "@/views/auth/LoginPage.vue"
 
 const routes = [
     {
@@ -8,15 +8,15 @@ const routes = [
         component: LoginPage,
     },
     {
-        path: "/login",  // TestComponent.vue로 이동할 Path
-        name: "LoginPage",  // router name
-        component: LoginPage,  // Path로 이동될 Component
+        path: "/login",  
+        name: "LoginPage",
+        component: LoginPage,
     },
-];
+]
 
 const router = createRouter({
     history: createWebHistory(),
     routes,
-});
+})
 
 export default router;
