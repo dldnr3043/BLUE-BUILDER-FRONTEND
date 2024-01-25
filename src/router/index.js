@@ -21,6 +21,11 @@ const routes = [
     name: 'Signup',
     component: () => import("@/views/auth/SignUp.vue"),
   },
+  {
+    path: '/main/botList',
+    name: 'BotList',
+    component: () => import("@/views/main/BotList.vue"),
+  },
 ];
 
 const router = new VueRouter({

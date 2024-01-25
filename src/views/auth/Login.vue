@@ -14,7 +14,7 @@
 
                 <div class="margin-top-50">Password</div>
                 <input class="bl-input" type="password" v-model="userPassword" placeholder="Enter your Password">
-                <button type="button" class="bl-btn-fill" @click="">Login</button>
+                <button type="button" class="bl-btn-fill" @click="login">Login</button>
                 <button type="button" class="bl-btn-light" @click="moveSignUp">SignUp</button>
             </div>
         </div>
@@ -30,8 +30,26 @@ export default {
         }
     },
     methods: {
-        login: function() {
-            
+        login: async function() {
+            let url = '/api/login';
+            let data = {
+                email: this.userEmail,
+                password: this.userPassword
+            };
+            let header = {};
+
+            let res = await this.$post(url, data, header);
+
+            if(!res.data.ERROR_FLAG) {
+                alert('인증이 완료되었습니다.')
+                this.$store.dispatch('setToken', res.data.DATA)
+                console.log(this.$store.getters.isLogin)
+                console.log(this.$store.getters.getToken)
+                this.$router.push('/main/botList')
+            }
+            else {
+                alert(res.data.ERROR_MSG)
+            }
         },
 
         moveSignUp: function() {
