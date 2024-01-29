@@ -43,8 +43,7 @@ export default {
             if(!res.data.ERROR_FLAG) {
                 alert('인증이 완료되었습니다.')
                 this.$store.dispatch('setToken', res.data.DATA)
-                console.log(this.$store.getters.isLogin)
-                console.log(this.$store.getters.getToken)
+                window.sessionStorage.setItem('token', res.data.DATA)
                 this.$router.push('/main/botList')
             }
             else {
@@ -55,6 +54,11 @@ export default {
         moveSignUp: function() {
             this.$router.push('/signup');
         },
-    }
+    },
+
+    mounted() {
+        // 세션이 남아있다면 main page로 이동
+        if(window.sessionStorage.getItem('token')) this.$router.push('/main/botList')
+    },
 }
 </script>
