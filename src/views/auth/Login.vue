@@ -31,24 +31,30 @@ export default {
     },
     methods: {
         login: async function() {
-            let url = '/api/login';
+            let url = '/api/login'
             let data = {
                 email: this.userEmail,
                 password: this.userPassword
             };
             let header = {};
 
-            let res = await this.$post(url, data, header);
+            let res = await this.$post(url, data, header)
 
             if(!res.data.ERROR_FLAG) {
                 alert('인증이 완료되었습니다.')
-                this.$store.dispatch('setToken', res.data.DATA)
-                window.sessionStorage.setItem('token', res.data.DATA)
+                this.setToken(res.data.DATA)
                 this.$router.push('/main/botList')
             }
             else {
                 alert(res.data.ERROR_MSG)
             }
+        },
+
+        setToken: function(tokenInfo) {
+            this.$store.dispatch('setToken', tokenInfo)
+            window.sessionStorage.setItem('accessToken', tokenInfo.accessToken)
+            window.sessionStorage.setItem('accessTokenExpirationTime', tokenInfo.accessTokenExpirationTime)
+            window.sessionStorage.setItem('refreshToken', tokenInfo.refreshToken)
         },
 
         moveSignUp: function() {
@@ -58,7 +64,7 @@ export default {
 
     mounted() {
         // 세션이 남아있다면 main page로 이동
-        if(window.sessionStorage.getItem('token')) this.$router.push('/main/botList')
+        if(window.sessionStorage.getItem('accessToken')) this.$router.push('/main/botList')
     },
 }
 </script>

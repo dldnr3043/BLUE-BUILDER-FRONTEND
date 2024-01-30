@@ -12,10 +12,13 @@ export default new Vuex.Store({
             return state.token
         },
         isLogin(state) {
-            return state.token == null ? false : true;
+            return state.token == null ? false : true
         }
     },
     mutations: {
+        initToken(state) {
+            state.token = null
+        },
         setToken(state, newToken) {
             state.token = newToken
         }

@@ -5,7 +5,7 @@ Vue.use(VueRouter);
 
 export const beforeAuth = (isAuth) => (to, from, next) => {
   //token이 없으면 login 페이지를 이동
-  if ((window.sessionStorage.getItem("token") && isAuth) || !isAuth) {
+  if ((window.sessionStorage.getItem("accessToken") && isAuth) || !isAuth) {
     next()
   } else {
     // 로그인 화면으로 이동
