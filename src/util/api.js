@@ -7,11 +7,11 @@ export function post(url, data, header) {
         let now = new Date().getTime()
 
         // 1. access token이 만료되었을 경우 refresh token을 통해 access token 재발급 후 api 진행
-        if(window.sessionStorage.getItem('accessToken') && now > window.sessionStorage.getItem('accessTokenExpirationTime')) {
+        if(window.localStorage.getItem('accessToken') && now > window.localStorage.getItem('accessTokenExpirationTime')) {
             let reissueUrl = '/api/auth/token/reissue';
             let reissueData = {
-                accessToken: window.sessionStorage.getItem("accessToken"),
-                refreshToken: window.sessionStorage.getItem("refreshToken")
+                accessToken: window.localStorage.getItem("accessToken"),
+                refreshToken: window.localStorage.getItem("refreshToken")
             };
   
             // token 재발급
@@ -19,9 +19,9 @@ export function post(url, data, header) {
             .then(res=>{
                 // 성공한 경우 새로운 토큰 정보 세팅 후 기존 api 진행
                 if(!res.data.ERROR_FLAG) {
-                    window.sessionStorage.setItem('accessToken', res.data.DATA.accessToken)
-                    window.sessionStorage.setItem('accessTokenExpirationTime', res.data.DATA.accessTokenExpirationTime)
-                    window.sessionStorage.setItem('refreshToken', res.data.DATA.refreshToken)
+                    window.localStorage.setItem('accessToken', res.data.DATA.accessToken)
+                    window.localStorage.setItem('accessTokenExpirationTime', res.data.DATA.accessTokenExpirationTime)
+                    window.localStorage.setItem('refreshToken', res.data.DATA.refreshToken)
   
                     // 원래 하려던 api 진행
                     api.post(url, data, { headers : header })
@@ -35,7 +35,7 @@ export function post(url, data, header) {
                 // 실패한 경우 세션정보 초기화 후 로그인 페이지로 이동
                 else {
                     this.$store.dispatch('initToken')
-                    window.sessionStorage.clear()
+                    window.localStorage.clear()
                     location.href = '/login'
                     resolve(res)
                 }
@@ -64,7 +64,7 @@ api.interceptors.request.use(
     async (request) => {
       // login, signup, reissue는 access token 인증하지 않음
       if(!request.url.includes('login') && !request.url.includes('signup') && !request.url.includes('reissue')) {
-        request.headers['Authorization'] = 'Bearer ' + window.sessionStorage.getItem("accessToken")
+        request.headers['Authorization'] = 'Bearer ' + window.localStorage.getItem("accessToken")
       }
       
       return request
@@ -81,7 +81,7 @@ api.interceptors.request.use(
     },
     async (error) => {
       if(error.response.status == 401 || error.response.status == 403) {
-        window.sessionStorage.clear()
+        window.localStorage.clear()
         location.href = '/login'
       }
       else {

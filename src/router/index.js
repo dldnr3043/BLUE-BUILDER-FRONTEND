@@ -5,7 +5,7 @@ Vue.use(VueRouter);
 
 export const beforeAuth = (isAuth) => (to, from, next) => {
   //token이 없으면 login 페이지를 이동
-  if ((window.sessionStorage.getItem("accessToken") && isAuth) || !isAuth) {
+  if ((window.localStorage.getItem("accessToken") && isAuth) || !isAuth) {
     next()
   } else {
     // 로그인 화면으로 이동
@@ -33,10 +33,16 @@ const routes = [
     beforeEnter: beforeAuth(false)
   },
   {
-    path: '/main/botList',
-    name: 'BotList',
-    component: () => import("@/views/main/BotList.vue"),
-    beforeEnter: beforeAuth(true)
+    path: "/main",
+    component: () => import("@/layout/botList/index.vue"),
+    children: [
+      {
+        path: "/main/botList",
+        name: "BotList",
+        component: () => import("@/views/main/BotList.vue"),
+        beforeEnter: beforeAuth(true),
+      },
+    ],
   },
 ];
 
