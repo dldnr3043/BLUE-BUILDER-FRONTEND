@@ -53,9 +53,9 @@ export default {
 
         setToken: function(tokenInfo) {
             this.$store.dispatch('setToken', tokenInfo)
-            window.sessionStorage.setItem('accessToken', tokenInfo.accessToken)
-            window.sessionStorage.setItem('accessTokenExpirationTime', tokenInfo.accessTokenExpirationTime)
-            window.sessionStorage.setItem('refreshToken', tokenInfo.refreshToken)
+            window.localStorage.setItem('accessToken', tokenInfo.accessToken)
+            window.localStorage.setItem('accessTokenExpirationTime', tokenInfo.accessTokenExpirationTime)
+            window.localStorage.setItem('refreshToken', tokenInfo.refreshToken)
         },
 
         setUserInfo: function() {
@@ -72,7 +72,7 @@ export default {
 
     mounted() {
         // 세션이 남아있다면 main page로 이동
-        if(window.sessionStorage.getItem('accessToken')) this.$router.push('/main/botList')
+        if(window.localStorage.getItem('accessToken')) this.$router.push('/main/botList')
     },
 }
 </script>
