@@ -19,8 +19,12 @@
 
 <script>
     import UserMenu from '@/components/layout/UserMenu'
+    import { mixin } from '@/mixin/mixin'
 
     export default {
+        mixins: [
+            mixin
+        ],
         components: {
             UserMenu
         },
@@ -60,7 +64,7 @@
         },
         mounted() {
             // this.selectUserInfo()
-            
+            this.sessionTimeoutCheck()
         },
     }
 </script>

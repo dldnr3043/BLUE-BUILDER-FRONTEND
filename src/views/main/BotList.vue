@@ -20,7 +20,10 @@ export default {
     },
     methods: {
         logout: function() {
-            this.mixin_logout()
+            let logoutFlag = confirm('로그아웃을 하시겠습니까?')
+            if(logoutFlag) {
+                this.mixin_logout()
+            }
         },
     },
 
