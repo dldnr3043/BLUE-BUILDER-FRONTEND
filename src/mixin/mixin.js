@@ -8,7 +8,7 @@ export const mixin = {
         mixin_logout: async function() {
             let url = '/api/logout'
             let data = {
-                email: this.$store.getters.getUserInfo.email
+                email: this.$store.getters.userInfo.email
             };
             let header = {};
 

@@ -43,7 +43,6 @@ export default {
             if(!res.data.ERROR_FLAG) {
                 alert('인증이 완료되었습니다.')
                 this.setToken(res.data.DATA)
-                this.setUserInfo()
                 this.$router.push('/main/botList')
             }
             else {
@@ -52,17 +51,9 @@ export default {
         },
 
         setToken: function(tokenInfo) {
-            this.$store.dispatch('setToken', tokenInfo)
             window.localStorage.setItem('accessToken', tokenInfo.accessToken)
             window.localStorage.setItem('accessTokenExpirationTime', tokenInfo.accessTokenExpirationTime)
             window.localStorage.setItem('refreshToken', tokenInfo.refreshToken)
-        },
-
-        setUserInfo: function() {
-            let userInfo = {
-                email: this.userEmail
-            }
-            this.$store.dispatch('setUserInfo', userInfo)
         },
 
         moveSignUp: function() {

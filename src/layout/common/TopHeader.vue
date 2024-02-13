@@ -10,9 +10,9 @@
             </div>
             <div class="account-info">
                 <!-- Your account information display goes here -->
-                <button type="button" class="header-userinfo" @click="clickUserMenuModal">{{ userInfo.email }}</button> <!-- Replace with dynamic account information -->
+                <button type="button" class="header-userinfo" @click="clickUserMenuModal">{{ $store.getters.userInfo.email }}</button> <!-- Replace with dynamic account information -->
             </div>
-            <UserMenu />
+            <UserMenu v-show="userMenuFlag" />
         </div>
     </header>
 </template>
@@ -30,8 +30,7 @@
         },
         data() {
             return {
-                userInfo: {},
-                userMenuFlag: true,
+                userMenuFlag: false,
             }
         },
         methods: {
@@ -44,18 +43,14 @@
             selectUserInfo: async function() {
                 let url = '/api/user/select'
                 let data = {
-                    email: this.userEmail,
-                    password: this.userPassword
+                    accessToken: window.localStorage.getItem('accessToken')
                 };
                 let header = {};
 
                 let res = await this.$post(url, data, header)
 
                 if(!res.data.ERROR_FLAG) {
-                    alert('인증이 완료되었습니다.')
-                    this.setToken(res.data.DATA)
-                    this.setUserInfo()
-                    this.$router.push('/main/botList')
+                    this.$store.dispatch('setUserInfo', res.data.DATA)
                 }
                 else {
                     alert(res.data.ERROR_MSG)
@@ -63,7 +58,7 @@
             },
         },
         mounted() {
-            // this.selectUserInfo()
+            this.selectUserInfo()
             this.sessionTimeoutCheck()
         },
     }

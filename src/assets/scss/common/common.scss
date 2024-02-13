@@ -12,8 +12,6 @@
     width: 100px;
     height: 40px;
     border-radius: 5px;
-    margin-top: 50px;
-    margin-right: 20px;
 }
 .bl-btn-light {
     background-color: #007cad;
@@ -21,12 +19,48 @@
     width: 100px;
     height: 40px;
     border-radius: 5px;
-    margin-top: 50px;
-    margin-right: 20px;
 }
 .is-center {
     margin-left: 30%;
 }
 .main-container {
     display: flex;
+}
+.user-menu{
+    position: absolute;
+    border: 1px solid transparent; // 테두리 투명
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); // 그림자 효과
+    border-radius: 3px;
+    width: 250px;
+    top: 100%;
+    right: 0%;
+    background-color: white;
+    z-index: 1;
+}
+.info-my {
+    display: flex;
+    flex-direction: column;
+}
+li {
+    padding-top: 6px;
+    padding-bottom: 4px;
+}
+.list-service {
+    padding-top: 10px;
+    color: black;
+    list-style-type: none;
+    .last-child{
+        border-bottom: 1px solid #eee;
+    }
+}
+.custom-table {
+    .v-data-table-header th {
+        background-color: #eee;
+    }
+}
+.is-right{
+    display: flex;
+    margin-left: auto;
+    align-items: center;
+    justify-content: center;
 }
