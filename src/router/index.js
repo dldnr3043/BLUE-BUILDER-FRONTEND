@@ -37,9 +37,9 @@ const routes = [
     component: () => import("@/layout/main/index.vue"),
     children: [
       {
-        path: "/main/botList",
+        path: "/main/bot/botList",
         name: "BotList",
-        component: () => import("@/views/main/BotList.vue"),
+        component: () => import("@/views/main/bot/BotList.vue"),
         beforeEnter: beforeAuth(true),
       },
     ],

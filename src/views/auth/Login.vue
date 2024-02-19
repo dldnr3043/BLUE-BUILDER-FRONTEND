@@ -43,7 +43,7 @@ export default {
             if(!res.data.ERROR_FLAG) {
                 alert('인증이 완료되었습니다.')
                 this.setToken(res.data.DATA)
-                this.$router.push('/main/botList')
+                this.$router.push('/main/bot/botList')
             }
         },
 
@@ -60,7 +60,7 @@ export default {
 
     mounted() {
         // 세션이 남아있다면 main page로 이동
-        if(window.localStorage.getItem('accessToken')) this.$router.push('/main/botList')
+        if(window.localStorage.getItem('accessToken')) this.$router.push('/main/bot/botList')
     },
 }
 </script>

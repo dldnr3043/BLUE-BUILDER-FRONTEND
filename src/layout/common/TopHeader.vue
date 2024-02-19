@@ -4,7 +4,7 @@
         <div class="logo-and-account">
             <div class="logo">
                 <!-- <img src="@/assets/blue-builder-logo.png" alt="Blue Builder Logo" style="height: 40px;"> -->
-                <a class="header-a" href="/main/botList">
+                <a class="header-a" href="/main/bot/botList">
                     <span class="header-text">BUILE-BUILDER</span>
                 </a>
             </div>

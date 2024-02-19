@@ -3,7 +3,7 @@
         <div class="bot-list-table">
             <div class="header-area">
                 <span>My Chatbot</span>
-                <button type="button" class="bl-btn-fill is-right" style="margin-top: 30px; margin-right: 50px; margin-bottom: 10px;">+ make bot</button>
+                <button type="button" class="bl-btn-fill is-right" style="margin-top: 30px; margin-right: 50px; margin-bottom: 10px;">+ Create Bot</button>
             </div>
 
             <v-data-table
@@ -17,7 +17,7 @@
                 }"
             >
             <template v-slot:top>
-                <v-text-field v-model="search" label="search"></v-text-field>
+                <v-text-field v-model="search" label="Search Bot"></v-text-field>
             </template>
             </v-data-table>
         </div>

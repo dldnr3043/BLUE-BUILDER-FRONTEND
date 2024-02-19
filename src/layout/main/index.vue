@@ -52,7 +52,7 @@ export default {
       },
   },
   mounted() {
-    // store 저장 데이터 저장 이후 content 컴포넌트 생성
+    // store 초기 데이터(user info) 저장 이후 content 컴포넌트 생성
     setTimeout(() => {
       this.showContent = true
     }, 500)
@@ -62,7 +62,7 @@ export default {
   },
   created() {
       this.setUserInfo()
-      this.sessionTimeoutCheck()
+      // this.sessionTimeoutCheck()
   },
 }
 </script>
