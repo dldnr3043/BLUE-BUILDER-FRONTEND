@@ -77,6 +77,10 @@ api.interceptors.request.use(
   // response(응답)시 아래의 로직이 인터셉트 된다.
   api.interceptors.response.use(
     async (response) => {
+      if(response.data.ERROR_FLAG) {
+        (response.data.ERROR_MSG != undefined) ? alert(response.data.ERROR_MSG) : alert('시스템 내부에 장애가 발생했습니다.')
+      }
+
       return response
     },
     async (error) => {
