@@ -45,6 +45,7 @@ export default {
 
           if(!res.data.ERROR_FLAG) {
               this.$store.dispatch('setUserInfo', res.data.DATA)
+              this.showContent = true // store 초기 데이터(user info) 저장 이후 content 컴포넌트 생성
           }
           else {
               alert(res.data.ERROR_MSG)
@@ -52,11 +53,6 @@ export default {
       },
   },
   mounted() {
-    // store 초기 데이터(user info) 저장 이후 content 컴포넌트 생성
-    setTimeout(() => {
-      this.showContent = true
-    }, 500)
-
     // botList 화면인 경우 left sidebar 표시 X
     this.$router.currentRoute.fullPath.includes('botList') ? this.showLeftSidebar = false : true
   },

@@ -8,8 +8,7 @@ module.exports = defineConfig({
   devServer: { 
     proxy: { // proxyTable 설정 
             '/api': { 
-                    target: 'http://localhost:40000/api',                           //로컬_백엔드 APIs 호출 Arhtur.Kim
-                    //target: 'https://dev.hkpalette.com/api',                     //운영_백엔드 APIs 호출 Arhtur.Kim
+                    target: 'http://localhost:40000/api',                           //로컬_백엔드 APIs 호출
                     changeOrigin: true , 
                     pathRewrite:{ "^/api" : '' 
                             } 
