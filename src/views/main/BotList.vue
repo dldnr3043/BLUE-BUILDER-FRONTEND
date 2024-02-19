@@ -37,25 +37,41 @@ export default {
             headers: [
                 { text: 'Bot Name', value: 'botName', width: '400px' },
                 { text: 'Messenger', value: 'messenger', width: '200px' },
-                { text: 'Connected Channel', value: 'connectedChannel', width: '600px' },
+                { text: 'Connected Channel', value: 'channelName', width: '400px' },
+                { text: 'Auth', value: 'auth', width: '100px' },
             ],
-            botList: [
-                { botName: 1, messenger: 'John Doe', connectedChannel: 'john@example.com', authentication: 'master' },
-                { botName: 2, messenger: 'Jane Doe', connectedChannel: 'jane@example.com', authentication: 'user' },
-            ]
+            botList: []
         }
     },
     methods: {
-        logout: function() {
-            let logoutFlag = confirm('로그아웃을 하시겠습니까?')
-            if(logoutFlag) {
-                this.mixin_logout()
+        selectBotList: async function() {
+            if(this.validationSelectBotList()) return;
+
+            let url = '/api/bot-list/select'
+            let data = {
+                email: this.$store.getters.userInfo.email,
+            };
+            let header = {};
+
+            let res = await this.$post(url, data, header)
+
+            if(!res.data.ERROR_FLAG) {
+                this.botList = res.data.DATA
             }
+        },
+
+        validationSelectBotList: function() {
+            if(this.$store.getters.userInfo.email == undefined) {
+                alert('이메일 데이터가 없습니다.')
+                return true
+            } 
+
+            return false
         },
     },
 
-    async mounted() {
-
+    mounted() {
+        this.selectBotList()
     },
 }
 </script>

@@ -45,9 +45,6 @@ export default {
                 this.setToken(res.data.DATA)
                 this.$router.push('/main/botList')
             }
-            else {
-                alert(res.data.ERROR_MSG)
-            }
         },
 
         setToken: function(tokenInfo) {

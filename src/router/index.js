@@ -34,7 +34,7 @@ const routes = [
   },
   {
     path: "/main",
-    component: () => import("@/layout/botList/index.vue"),
+    component: () => import("@/layout/main/index.vue"),
     children: [
       {
         path: "/main/botList",

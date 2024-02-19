@@ -19,7 +19,7 @@ export const mixin = {
                 window.localStorage.removeItem('accessToken')
                 window.localStorage.removeItem('accessTokenExpirationTime')
                 window.localStorage.removeItem('refreshToken')
-                location.href = '/login'
+                this.$router.push('/login');
             }
             else {
                 alert(res.data.ERROR_MSG)

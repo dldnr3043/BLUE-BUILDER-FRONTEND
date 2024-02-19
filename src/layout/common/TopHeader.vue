@@ -19,11 +19,9 @@
 
 <script>
     import UserMenu from '@/components/layout/UserMenu'
-    import { mixin } from '@/mixin/mixin'
 
     export default {
         mixins: [
-            mixin
         ],
         components: {
             UserMenu
@@ -38,28 +36,11 @@
             clickUserMenuModal: function() {
                 this.userMenuFlag = !this.userMenuFlag
             },
-            
-            // 사용자정보 조회
-            selectUserInfo: async function() {
-                let url = '/api/user/select'
-                let data = {
-                    accessToken: window.localStorage.getItem('accessToken')
-                };
-                let header = {};
-
-                let res = await this.$post(url, data, header)
-
-                if(!res.data.ERROR_FLAG) {
-                    this.$store.dispatch('setUserInfo', res.data.DATA)
-                }
-                else {
-                    alert(res.data.ERROR_MSG)
-                }
-            },
         },
         mounted() {
-            this.selectUserInfo()
-            this.sessionTimeoutCheck()
+        },
+        created() {
+
         },
     }
 </script>
