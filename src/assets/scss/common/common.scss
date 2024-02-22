@@ -6,6 +6,13 @@
 .margin-top-50{
     margin-top: 50px;
 }
+.bl-btn {
+    background-color: #eee;
+    color: black;
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+}
 .bl-btn-fill {
     background-color: #004AAD;
     color: white;
@@ -63,4 +70,10 @@ li {
     margin-left: auto;
     align-items: center;
     justify-content: center;
+}
+.bl-input{
+    border: 1px solid black;
+    padding-left: 10px;
+    width: 360px;
+    height: 40px;
 }
