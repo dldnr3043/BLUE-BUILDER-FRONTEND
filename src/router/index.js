@@ -42,6 +42,12 @@ const routes = [
         component: () => import("@/views/main/bot/BotList.vue"),
         beforeEnter: beforeAuth(true),
       },
+      {
+        path: "/main/bot/botDetail/:botId",
+        name: "BotDetail",
+        component: () => import("@/views/main/bot/BotDetail.vue"),
+        beforeEnter: beforeAuth(true),
+      },
     ],
   },
 ];

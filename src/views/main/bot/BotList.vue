@@ -36,7 +36,7 @@
                 :items="botList"
                 :search="search"
                 class="custom-table"
-                @click:rows="moveBotDetailPage"
+                @click:row="moveBotDetailPage"
                 :footer-props="{
                     'items-per-page-options': [5, 10, 15],
                     'items-per-page-text': 'rows'
@@ -74,7 +74,7 @@ export default {
     },
     methods: {
         moveBotDetailPage: function(item) {
-            console.log(item)
+            this.$router.push("/main/bot/botDetail/" + item.botId)
         },
         insertBot: async function() {
             if(this.validationInsertBot()) return
