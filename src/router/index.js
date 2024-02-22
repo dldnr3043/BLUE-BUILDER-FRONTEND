@@ -34,7 +34,7 @@ const routes = [
   },
   {
     path: "/main",
-    component: () => import("@/layout/main/index.vue"),
+    component: () => import("@/layout/main/nonSidebarIndex.vue"),
     children: [
       {
         path: "/main/bot/botList",
@@ -42,6 +42,12 @@ const routes = [
         component: () => import("@/views/main/bot/BotList.vue"),
         beforeEnter: beforeAuth(true),
       },
+    ],
+  },
+  {
+    path: "/main",
+    component: () => import("@/layout/main/index.vue"),
+    children: [
       {
         path: "/main/bot/botDetail/:botId",
         name: "BotDetail",

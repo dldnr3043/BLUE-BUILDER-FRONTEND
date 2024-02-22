@@ -2,7 +2,6 @@
     <div class="index-layout">
         <TopHeader />
         <div class="main-container">
-            <LeftSidebar />
             <div class="content">
               <Content v-if="showContent" />
             </div>
@@ -13,7 +12,6 @@
 
 <script>
 import TopHeader from '@/layout/common/TopHeader.vue'
-import LeftSidebar from '@/layout/common/LeftSidebar.vue'
 import Footer from '@/layout/common/Footer.vue'
 import Content from '@/layout/common/Content.vue'
 import { mixin } from '@/mixin/mixin'
@@ -21,7 +19,6 @@ import { mixin } from '@/mixin/mixin'
 export default {
   components: {
     TopHeader,
-    LeftSidebar,
     Footer,
     Content,
   },
