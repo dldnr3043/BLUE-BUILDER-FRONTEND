@@ -15,6 +15,7 @@
   align-items: center;
   height: 40px;
   background-color: #eee;
+  border: 1px solid #DDD;
 }
 .bl-footer-me {
   font-size: 12px;
